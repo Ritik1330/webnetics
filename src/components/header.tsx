@@ -29,123 +29,189 @@ const Header = () => {
 
   return (
     <>
-      {/* Main Header */}
-      <header className="header-main relative z-40 shadow-lg">
+      {/* Main Header - Hidden on mobile */}
+      <header className="bg-primary backdrop-blur-lg relative z-40 shadow-lg hidden md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-24">
-            {/* Logo */}
-            <div className="flex items-center">
-              <div className="logo-container relative -top-5 w-96 h-96">
-                <Image
-                  src={LOGO_BG}
-                  alt="Logo Background"
-                  fill
-                  className="object-contain drop-shadow-sm"
-                />
-                <div className="absolute top-14 -left-4 inset-0 flex items-center justify-center">
-                  <Image
-                    src={LOGO}
-                    alt="Adsflourish Logo"
-                    width={200}
-                    height={150}
-                    className="object-contain drop-shadow-md"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              {navigationLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="header-nav-link font-medium text-lg tracking-wide"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </nav>
-
-            {/* Search Icon & Mobile Menu */}
-            <div className="flex items-center space-x-2">
-              <button
-                type="button"
-                aria-label="Search"
-                className="header-search-btn p-2 text-white hover:text-white/80 rounded-lg hover:bg-white/10"
-              >
-                <Search size={20} />
-              </button>
-
-              {/* Mobile Menu Button */}
+            {/* Mobile Layout */}
+            <div className="md:hidden flex items-center justify-between w-full">
+              {/* Mobile Menu Button - Left */}
               <button
                 type="button"
                 aria-label="Toggle mobile menu"
-                className="md:hidden p-2 text-white hover:text-white/80 rounded-lg hover:bg-white/10"
+                className="p-3 text-white hover:text-white/80 rounded-lg hover:bg-white/10"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
-                {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
+
+              {/* Mobile Logo - Center */}
+              <div className="flex items-center absolute left-1/2 transform -translate-x-1/2">
+                <div className="relative -top-2 w-48 h-48 transition-transform duration-300 hover:scale-105">
+                  <Image
+                    src={LOGO_BG}
+                    alt="Logo Background"
+                    fill
+                    className="object-contain drop-shadow-sm"
+                  />
+                  <div className="absolute top-7 -left-2 inset-0 flex items-center justify-center">
+                    <Image
+                      src={LOGO}
+                      alt="Adsflourish Logo"
+                      width={160}
+                      height={120}
+                      className="object-contain drop-shadow-md"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile Search - Right */}
+              <button
+                type="button"
+                aria-label="Search"
+                className="p-3 text-white hover:text-white/80 rounded-lg hover:bg-white/10 transition-all duration-200 hover:scale-110"
+              >
+                <Search size={24} />
+              </button>
+            </div>
+
+            {/* Desktop Layout */}
+            <div className="hidden md:flex items-center justify-between w-full">
+              {/* Desktop Logo */}
+              <div className="flex items-center">
+                <div className="relative -top-5 w-96 h-96 transition-transform duration-300 hover:scale-105">
+                  <Image
+                    src={LOGO_BG}
+                    alt="Logo Background"
+                    fill
+                    className="object-contain drop-shadow-sm"
+                  />
+                  <div className="absolute top-14 -left-4 inset-0 flex items-center justify-center">
+                    <Image
+                      src={LOGO}
+                      alt="Adsflourish Logo"
+                      width={240}
+                      height={180}
+                      className="object-contain drop-shadow-md"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Desktop Navigation */}
+              <nav className="flex items-center space-x-8">
+                {navigationLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="text-white hover:text-white/80 font-medium text-lg tracking-wide transition-all duration-200 hover:-translate-y-0.5 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-white/80 after:transition-all after:duration-300 hover:after:w-full focus:outline-2 focus:outline-ring focus:outline-offset-2"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </nav>
+
+              {/* Desktop Search */}
+              <div className="flex items-center">
+                <button
+                  type="button"
+                  aria-label="Search"
+                  className="p-2 text-white hover:text-white/80 rounded-lg hover:bg-white/10 transition-all duration-200 hover:scale-110 focus:outline-2 focus:outline-ring focus:outline-offset-2"
+                >
+                  <Search size={20} />
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Sticky Header */}
+      {/* Sticky Header - Always visible on mobile, scroll-triggered on desktop */}
       <header
-        className={`header-sticky fixed top-0 left-0 right-0 shadow-lg border-b z-50 transition-all duration-300 ${
-          isScrolled
+        className={`bg-white/95 backdrop-blur-xl border-border fixed top-0 left-0 right-0 shadow-lg border-b z-50 transition-all duration-300 ${
+          // Always visible on mobile, scroll-triggered on desktop
+          "md:transition-transform md:duration-300 " +
+          (isScrolled
             ? "translate-y-0 opacity-100"
-            : "-translate-y-full opacity-0"
+            : "md:-translate-y-full md:opacity-0 translate-y-0 opacity-100")
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* Compact Logo */}
-            <div className="flex items-center">
-              <div className="logo-container">
-                <Image
-                  src={LOGO}
-                  alt="Adsflourish Logo"
-                  width={140}
-                  height={110}
-                  className="object-contain drop-shadow-sm"
-                />
-              </div>
-            </div>
-
-            {/* Compact Navigation */}
-            <nav className="hidden md:flex items-center space-x-6">
-              {navigationLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="header-nav-link font-medium text-base tracking-wide"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </nav>
-
-            {/* Compact Search Icon & Mobile Menu */}
-            <div className="flex items-center space-x-2">
-              <button
-                type="button"
-                aria-label="Search"
-                className="header-search-btn p-2 text-muted-foreground hover:text-primary rounded-lg hover:bg-accent"
-              >
-                <Search size={18} />
-              </button>
-
-              {/* Mobile Menu Button */}
+            {/* Mobile Sticky Layout */}
+            <div className="md:hidden flex items-center justify-between w-full">
+              {/* Mobile Menu Button - Left */}
               <button
                 type="button"
                 aria-label="Toggle mobile menu"
-                className="md:hidden p-2 text-muted-foreground hover:text-primary rounded-lg hover:bg-accent"
+                className="p-2 text-muted-foreground hover:text-primary rounded-lg hover:bg-accent"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
-                {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+                {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
+
+              {/* Mobile Logo - Center */}
+              <div className="flex items-center absolute left-1/2 transform -translate-x-1/2">
+                <div className="transition-transform duration-300 hover:scale-105 scale-85 md:scale-100">
+                  <Image
+                    src={LOGO}
+                    alt="Adsflourish Logo"
+                    width={130}
+                    height={100}
+                    className="object-contain drop-shadow-sm"
+                  />
+                </div>
+              </div>
+
+              {/* Mobile Search - Right */}
+              <button
+                type="button"
+                aria-label="Search"
+                className="p-2 text-muted-foreground hover:text-primary rounded-lg hover:bg-accent transition-all duration-200 hover:scale-110 focus:outline-2 focus:outline-ring focus:outline-offset-2"
+              >
+                <Search size={20} />
+              </button>
+            </div>
+
+            {/* Desktop Sticky Layout */}
+            <div className="hidden md:flex items-center justify-between w-full">
+              {/* Desktop Compact Logo */}
+              <div className="flex items-center">
+                <div className="transition-transform duration-300 hover:scale-105">
+                  <Image
+                    src={LOGO}
+                    alt="Adsflourish Logo"
+                    width={170}
+                    height={130}
+                    className="object-contain drop-shadow-sm"
+                  />
+                </div>
+              </div>
+
+              {/* Desktop Compact Navigation */}
+              <nav className="flex items-center space-x-6">
+                {navigationLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="text-muted-foreground hover:text-primary font-medium text-base tracking-wide transition-all duration-200 hover:-translate-y-0.5 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full focus:outline-2 focus:outline-ring focus:outline-offset-2"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </nav>
+
+              {/* Desktop Compact Search */}
+              <div className="flex items-center">
+                <button
+                  type="button"
+                  aria-label="Search"
+                  className="p-2 text-muted-foreground hover:text-primary rounded-lg hover:bg-accent transition-all duration-200 hover:scale-110 focus:outline-2 focus:outline-ring focus:outline-offset-2"
+                >
+                  <Search size={18} />
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -158,9 +224,16 @@ const Header = () => {
         }`}
       >
         {/* Backdrop */}
-        <div
-          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        <button
+          type="button"
+          className="absolute inset-0 bg-black/50 backdrop-blur-sm cursor-default"
           onClick={() => setIsMobileMenuOpen(false)}
+          onKeyDown={(e) => {
+            if (e.key === "Escape") {
+              setIsMobileMenuOpen(false);
+            }
+          }}
+          aria-label="Close mobile menu"
         />
 
         {/* Menu Panel */}
@@ -175,8 +248,8 @@ const Header = () => {
               <Image
                 src={LOGO}
                 alt="Adsflourish Logo"
-                width={120}
-                height={90}
+                width={150}
+                height={115}
                 className="object-contain"
               />
               <button
