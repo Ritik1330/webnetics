@@ -1,11 +1,11 @@
-import { AnimatedDotsBackground } from "@/components/ui/AnimatedDotsBackground";
+import { BackgroundLines } from "@/components/ui/background-lines";
 import { Send } from "lucide-react";
 
 export function AboutUs() {
   return (
     <div>
-      {/* About Us Content with AnimatedDotsBackground */}
-      <AnimatedDotsBackground className="py-1 px-4 !h-auto min-h-[40rem] flex items-center justify-center">
+      {/* About Us Content with BackgroundLines */}
+      <BackgroundLines className="py-1 px-4 !h-auto min-h-[40rem] flex items-center justify-center">
         <div className="max-w-4xl mx-auto relative z-10">
           {/* Header with decorative line */}
           <div className="text-center mb-12">
@@ -16,10 +16,6 @@ export function AboutUs() {
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-2">
               ABOUT US
-              <span className="inline-flex ml-2">
-                <div className="w-3 h-3 bg-purple-500 rounded-full mr-1"></div>
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-              </span>
             </h2>
           </div>
 
@@ -62,7 +58,7 @@ export function AboutUs() {
             </p>
           </div>
         </div>
-      </AnimatedDotsBackground>
+      </BackgroundLines>
 
       {/* Advertisers and Publishers Cards - Outside AnimatedDotsBackground */}
       <section className="py-16 px-4 bg-gray-50">
