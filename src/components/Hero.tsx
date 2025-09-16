@@ -90,9 +90,9 @@ const Hero1 = ({
             <Image
               src={image.src}
               alt={image.alt}
-              width={500}
+              width={600}
               height={400}
-              className="relative max-h-64 md:max-h-80 lg:max-h-96 w-full rounded-lg object-cover shadow-2xl border border-white/20"
+              className="relative max-h-64 md:max-h-80 lg:max-h-96 w-full rounded-lg object-cover "
             />
           </div>
         </div>
