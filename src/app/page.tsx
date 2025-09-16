@@ -13,6 +13,16 @@ export default function Home() {
       <Hero1
         heading="Creative. Strategic. Everywhere – 360° Solutions for Your Brand  "
         description="Discover our services and solutions to boost your business."
+        buttons={{
+          primary: {
+            text: "Become An Advertiser",
+            url: "/advertisers",
+          },
+          secondary: {
+            text: "Become A Publisher",
+            url: "/publishers",
+          },
+        }}
         image={{
           src: HERO.src,
           alt: "Hero image",

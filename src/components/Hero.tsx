@@ -1,6 +1,7 @@
+"use client";
 import { ArrowRight } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/moving-border";
 import { HERO_WAVE } from "@/assets/images";
 import Image from "next/image";
 
@@ -78,12 +79,12 @@ const Hero1 = ({
             <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-left-2 duration-1000 delay-700">
               {buttons.primary && (
                 <Button
-                  asChild
-                  className="group bg-white text-primary hover:bg-white/90 hover:scale-105 hover:shadow-xl font-semibold px-8 py-4 text-lg rounded-xl transition-all duration-300 shadow-lg"
+                  borderRadius="1.75rem"
+                  className="bg-gradient-to-r from-blue-400 via-blue-500 to-white text-primary font-semibold px-8 py-4 text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   <a
                     href={buttons.primary.url}
-                    className="flex items-center justify-center"
+                    className="flex items-center text-xl justify-center group"
                   >
                     {buttons.primary.text}
                     <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
@@ -92,13 +93,12 @@ const Hero1 = ({
               )}
               {buttons.secondary && (
                 <Button
-                  asChild
-                  variant="outline"
-                  className="group bg-white/5 backdrop-blur-sm border-white/30 text-white hover:bg-white/15 hover:text-white hover:scale-105 hover:shadow-xl font-semibold px-8 py-4 text-lg rounded-xl transition-all duration-300"
+                  borderRadius="1.75rem"
+                  className="bg-gradient-to-r text-white font-semibold px-8 py-4 text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   <a
                     href={buttons.secondary.url}
-                    className="flex items-center justify-center"
+                    className="flex items-center text-xl  justify-center group"
                   >
                     {buttons.secondary.text}
                     <ArrowRight className="size-4 ml-2 transition-transform group-hover:translate-x-1" />
