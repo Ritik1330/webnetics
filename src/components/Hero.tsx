@@ -64,10 +64,10 @@ const Hero1 = ({
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 max-w-7xl mx-auto">
+      <div className="container relative z-30 max-w-7xl mx-auto">
         <div className="grid items-center gap-12 md:gap-16 lg:gap-20 lg:grid-cols-2">
           <div className="flex flex-col items-start text-left max-w-2xl animate-in fade-in slide-in-from-left-8 duration-1000">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white drop-shadow-lg leading-tight mb-6 animate-in fade-in slide-in-from-left-6 duration-1000 delay-300">
+            <h1 className="text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white drop-shadow-lg leading-tight mb-6 animate-in fade-in slide-in-from-left-6 duration-1000 delay-300">
               <span className="bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent">
                 {heading}
               </span>
