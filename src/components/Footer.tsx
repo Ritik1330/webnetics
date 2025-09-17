@@ -44,22 +44,6 @@ export function Footer() {
                   href="#"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  Web Development
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors text-sm"
-                >
-                  Mobile Apps
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors text-sm"
-                >
                   Digital Marketing
                 </Link>
               </li>
@@ -68,7 +52,23 @@ export function Footer() {
                   href="#"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  Consulting
+                  Performance Marketing
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="text-gray-300 hover:text-white transition-colors text-sm"
+                >
+                  Influencer Marketing
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="text-gray-300 hover:text-white transition-colors text-sm"
+                >
+                  Programmatic
                 </Link>
               </li>
               <li>

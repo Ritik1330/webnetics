@@ -8,13 +8,11 @@ import { OurServices } from "@/components/OurServices";
 
 export default function Home() {
   return (
-    <div className="overflow-x-hidden pt-[70px] md:pt-0">
-      <Header />
+    <>
       <Hero />
       <AboutUs />
       <OurServices />
       <ClientsWhoTrustUs />
-      <Footer />
-    </div>
+    </>
   );
 }

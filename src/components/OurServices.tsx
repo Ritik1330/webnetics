@@ -215,7 +215,7 @@ export function OurServices() {
     },
     {
       id: "performance-marketing",
-      title: "Performance Marketing",
+      title: "Digital Marketing",
       description:
         "Finding the best match between people with the right influence and your brand values, all supported by powerful technology.",
       icon: <TrendingUpIcon className="w-8 h-8 text-blue-500" />,
