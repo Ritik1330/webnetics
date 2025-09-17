@@ -1,47 +1,39 @@
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: <explanation> */
 "use client";
-// biome-ignore assist/source/organizeImports: <explanation>
+import { HERO, HERO2, HERO3, HERO_WAVE } from "@/assets/images";
 import { ArrowRight } from "lucide-react";
-import { HERO_WAVE } from "@/assets/images";
 import Image from "next/image";
 import { NeonShimmerButton } from "./ui/neon-shimmer-button";
+import { HeroCarousel } from "./ui/hero-carousel";
 
-interface Hero1Props {
-  heading: string;
-  description: string;
-  buttons?: {
-    primary?: {
-      text: string;
-      url: string;
-    };
-    secondary?: {
-      text: string;
-      url: string;
-    };
-  };
-  image: {
-    src: string;
-    alt: string;
-  };
-}
+const heroSlides = [
+  {
+    heading: "Creative. Strategic. Everywhere – 360° Solutions for Your Brand",
+    image: HERO,
+  },
+  {
+    heading: "Your Brand, Our Vision – All-in-One Advertising.",
+    image: HERO2,
+  },
+  {
+    heading: "One Agency. Every Angle. Total Advertising Solutions.",
+    image: HERO3,
+  },
+];
 
-const Hero1 = ({
-  heading = "Blocks Built With Shadcn & Tailwind",
-  description = "Finely crafted components built with React, Tailwind and Shadcn UI. Developers can copy and paste these blocks directly into their project.",
-  buttons = {
+const Hero = () => {
+  const description =
+    "Transform your brand's presence with our comprehensive advertising solutions. From digital to traditional, we deliver results that matter.";
+  const buttons = {
     primary: {
       text: "Become An Advertiser",
-      url: "https://www.shadcnblocks.com",
+      url: "#get-started",
     },
     secondary: {
       text: "Become A Publisher",
-      url: "https://www.shadcnblocks.com",
+      url: "#learn-more",
     },
-  },
-  image = {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
-    alt: "Hero section demo image showing interface components",
-  },
-}: Hero1Props) => {
+  };
   return (
     <section className="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-orange-400 via-amber-500 to-blue-600 px-4 py-20 md:py-32">
       {/* Enhanced animated background elements with orange-blue theme */}
@@ -66,56 +58,61 @@ const Hero1 = ({
 
       {/* Content */}
       <div className="container relative z-30 max-w-7xl mx-auto">
-        <div className="grid items-center gap-12 md:gap-16 lg:gap-20 lg:grid-cols-2">
-          <div className="flex flex-col items-start text-left max-w-2xl animate-in fade-in slide-in-from-left-8 duration-1000">
-            <h1 className="text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white drop-shadow-lg leading-tight mb-6 animate-in fade-in slide-in-from-left-6 duration-1000 delay-300">
-              <span className="bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent">
-                {heading}
-              </span>
-            </h1>
-            <p className="text-white/90 text-lg md:text-xl leading-relaxed mb-8 max-w-lg animate-in fade-in slide-in-from-left-4 duration-1000 delay-500">
-              {description}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-left-2 duration-1000 delay-700">
-              {buttons.primary && (
-                <NeonShimmerButton
-                  variant="pink"
-                  className="bg-gradient-to-r from-blue-400 via-blue-500 to-white text-primary font-semibold px-8 py-4 text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
-                >
-                  <a
-                    href={buttons.primary.url}
-                    className="flex items-center text-xl justify-center group  text-nowrap"
+        <HeroCarousel>
+          {heroSlides.map((slide, index) => (
+            <div
+              key={`slide-${index}`}
+              className="grid items-center gap-12 md:gap-16 lg:gap-20 lg:grid-cols-2"
+            >
+              <div className="flex flex-col items-start text-left max-w-2xl animate-in fade-in slide-in-from-left-8 duration-1000">
+                <h1 className="text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white drop-shadow-lg leading-tight mb-6 animate-in fade-in slide-in-from-left-6 duration-1000 delay-300">
+                  <span className="bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent">
+                    {slide.heading}
+                  </span>
+                </h1>
+                <p className="text-white/90 text-lg md:text-xl leading-relaxed mb-8 max-w-lg animate-in fade-in slide-in-from-left-4 duration-1000 delay-500">
+                  {description}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-left-2 duration-1000 delay-700">
+                  <NeonShimmerButton
+                    variant="pink"
+                    className="bg-gradient-to-r from-blue-400 via-blue-500 to-white text-primary font-semibold px-8 py-4 text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
-                    {buttons.primary.text}
-                    <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
-                  </a>
-                </NeonShimmerButton>
-              )}
-              {buttons.secondary && (
-                <NeonShimmerButton className="bg-gradient-to-r text-white font-semibold px-8 py-4 text-lg transition-all duration-300 shadow-lg hover:shadow-xl">
-                  <a
-                    href={buttons.secondary.url}
-                    className="flex items-center text-xl  justify-center group text-nowrap"
-                  >
-                    {buttons.secondary.text}
-                    <ArrowRight className="size-4 ml-2 transition-transform group-hover:translate-x-1" />
-                  </a>
-                </NeonShimmerButton>
-              )}
+                    <a
+                      href={buttons.primary.url}
+                      className="flex items-center text-xl justify-center group text-nowrap"
+                    >
+                      {index === 0 ? buttons.primary.text : "Get Started"}
+                      <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
+                    </a>
+                  </NeonShimmerButton>
+                  {index === 0 && (
+                    <NeonShimmerButton className="bg-gradient-to-r text-white font-semibold px-8 py-4 text-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+                      <a
+                        href={buttons.secondary.url}
+                        className="flex items-center text-xl justify-center group text-nowrap"
+                      >
+                        {buttons.secondary.text}
+                        <ArrowRight className="size-4 ml-2 transition-transform group-hover:translate-x-1" />
+                      </a>
+                    </NeonShimmerButton>
+                  )}
+                </div>
+              </div>
+              <div className="relative flex justify-center lg:justify-end">
+                <div className="relative w-full max-w-xl lg:max-w-3xl xl:max-w-3xl">
+                  <Image
+                    src={slide.image}
+                    alt={`Hero slide ${index + 1}`}
+                    width={900}
+                    height={650}
+                    className="w-full h-auto rounded-2xl"
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="relative flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-xl lg:max-w-3xl xl:max-w-3xl">
-              <Image
-                src={image.src}
-                alt={image.alt}
-                width={900}
-                height={650}
-                className="w-full h-auto rounded-2xl"
-              />
-            </div>
-          </div>
-        </div>
+          ))}
+        </HeroCarousel>
       </div>
 
       {/* Wave decoration - Responsive */}
@@ -132,4 +129,4 @@ const Hero1 = ({
   );
 };
 
-export { Hero1 };
+export { Hero };

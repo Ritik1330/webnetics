@@ -56,7 +56,7 @@ const Header = () => {
               <div className="flex items-center absolute left-1/2 transform -translate-x-1/2">
                 <Image
                   src={LOGO}
-                  alt="Adsflourish Logo"
+                  alt="WebNetics ads Logo"
                   width={140}
                   height={80}
                   className="object-contain transition-transform duration-300 hover:scale-105"
@@ -77,7 +77,7 @@ const Header = () => {
               <div className="flex items-center">
                 <Image
                   src={LOGO}
-                  alt="Adsflourish Logo"
+                  alt="WebNetics ads Logo"
                   width={160}
                   height={100}
                   className="object-contain transition-transform duration-300 hover:scale-105"
@@ -140,7 +140,7 @@ const Header = () => {
             <div className="flex items-center justify-between p-6 border-b">
               <Image
                 src={LOGO}
-                alt="Adsflourish Logo"
+                alt="WebNetics ads Logo"
                 width={150}
                 height={90}
                 className="object-contain"

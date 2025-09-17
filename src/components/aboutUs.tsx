@@ -23,7 +23,9 @@ export function AboutUs() {
           <div className="space-y-6 text-gray-600 leading-relaxed">
             <p className="text-center">
               Team{" "}
-              <span className="text-orange-500 font-semibold">Adsflourish</span>{" "}
+              <span className="text-orange-500 font-semibold">
+                WebNetics ads
+              </span>{" "}
               has a mission of sharing profits with advertisers as well as
               publishers where we focus on minimizing the cost of our
               advertisers by providing the best marketing and promotional
@@ -35,7 +37,9 @@ export function AboutUs() {
 
             <p className="text-center">
               At{" "}
-              <span className="text-orange-500 font-semibold">Adsflourish</span>
+              <span className="text-orange-500 font-semibold">
+                WebNetics ads
+              </span>
               , we take great pride in our ability to help publishers monetize
               their traffic by promoting some of the biggest brands in media and
               advertising. For advertisers, at the same time we partner with

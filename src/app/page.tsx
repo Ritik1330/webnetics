@@ -1,34 +1,16 @@
 // biome-ignore assist/source/organizeImports: <explanation>
-import { HERO } from "@/assets/images";
 import { AboutUs } from "@/components/aboutUs";
 import { ClientsWhoTrustUs } from "@/components/ClientsWhoTrustUs";
 import { Footer } from "@/components/Footer";
 import Header from "@/components/header";
-import { Hero1 } from "@/components/Hero";
+import { Hero } from "@/components/Hero";
 import { OurServices } from "@/components/OurServices";
 
 export default function Home() {
   return (
     <div className="overflow-x-hidden pt-[70px] md:pt-0">
       <Header />
-      <Hero1
-        heading="Creative. Strategic. Everywhere – 360° Solutions for Your Brand  "
-        description="Discover our services and solutions to boost your business."
-        buttons={{
-          primary: {
-            text: "Become An Advertiser",
-            url: "/advertisers",
-          },
-          secondary: {
-            text: "Become A Publisher",
-            url: "/publishers",
-          },
-        }}
-        image={{
-          src: HERO.src,
-          alt: "Hero image",
-        }}
-      />
+      <Hero />
       <AboutUs />
       <OurServices />
       <ClientsWhoTrustUs />
