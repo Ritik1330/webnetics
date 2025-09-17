@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useRef, useMemo, useEffect, useState } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import * as THREE from 'three';
-import { useFBO } from '@react-three/drei';
-
+import React, { useRef, useMemo, useEffect, useState } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import * as THREE from "three";
+import { useFBO } from "@react-three/drei";
 
 const vertexShader = `
   varying vec2 vUv;
@@ -167,7 +166,6 @@ const displayShader = `
   }
 `;
 
-
 const config = {
   brushSize: 25.0,
   brushStrength: 0.5,
@@ -175,10 +173,10 @@ const config = {
   fluidDecay: 0.98,
   trailLength: 0.8,
   stopDecay: 0.85,
-  color1: '#b8fff7',
-  color2: '#6e3466',
-  color3: '#0133ff',
-  color4: '#66d1fe',
+  color1: "#b8fff7",
+  color2: "#6e3466",
+  color3: "#0133ff",
+  color4: "#66d1fe",
   colorIntensity: 1.0,
   softness: 1.0,
   lerpFactor: 0.1,
@@ -232,28 +230,30 @@ function FluidSimulation() {
       // Keep the last known position for smooth interpolation
     };
 
-    gl.domElement.addEventListener('mousemove', handleMouseMove);
-    gl.domElement.addEventListener('mouseleave', handleMouseLeave);
+    gl.domElement.addEventListener("mousemove", handleMouseMove);
+    gl.domElement.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      gl.domElement.removeEventListener('mousemove', handleMouseMove);
-      gl.domElement.removeEventListener('mouseleave', handleMouseLeave);
+      gl.domElement.removeEventListener("mousemove", handleMouseMove);
+      gl.domElement.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, [gl.domElement]);
 
   useFrame(({ gl, clock }) => {
     const time = clock.getElapsedTime();
-    
+
     // Lerp mouse position for smooth movement
     mouse.current.prevX = smoothMouse.current.x;
     mouse.current.prevY = smoothMouse.current.y;
-    
-    smoothMouse.current.x += (targetMouse.current.x - smoothMouse.current.x) * config.lerpFactor;
-    smoothMouse.current.y += (targetMouse.current.y - smoothMouse.current.y) * config.lerpFactor;
-    
+
+    smoothMouse.current.x +=
+      (targetMouse.current.x - smoothMouse.current.x) * config.lerpFactor;
+    smoothMouse.current.y +=
+      (targetMouse.current.y - smoothMouse.current.y) * config.lerpFactor;
+
     mouse.current.x = smoothMouse.current.x;
     mouse.current.y = smoothMouse.current.y;
-    
+
     if (fluidMaterial.current) {
       fluidMaterial.current.uniforms.iTime.value = time;
       fluidMaterial.current.uniforms.iFrame.value = frameCount;
@@ -261,11 +261,12 @@ function FluidSimulation() {
         mouse.current.x,
         mouse.current.y,
         mouse.current.prevX,
-        mouse.current.prevY
+        mouse.current.prevY,
       );
 
       fluidMaterial.current.uniforms.uBrushSize.value = config.brushSize;
-      fluidMaterial.current.uniforms.uBrushStrength.value = config.brushStrength;
+      fluidMaterial.current.uniforms.uBrushStrength.value =
+        config.brushStrength;
       fluidMaterial.current.uniforms.uFluidDecay.value = config.fluidDecay;
       fluidMaterial.current.uniforms.uTrailLength.value = config.trailLength;
       fluidMaterial.current.uniforms.uStopDecay.value = config.stopDecay;
@@ -273,32 +274,44 @@ function FluidSimulation() {
 
     if (displayMaterial.current) {
       displayMaterial.current.uniforms.iTime.value = time;
-      displayMaterial.current.uniforms.uDistortionAmount.value = config.distortionAmount;
-      displayMaterial.current.uniforms.uColorIntensity.value = config.colorIntensity;
+      displayMaterial.current.uniforms.uDistortionAmount.value =
+        config.distortionAmount;
+      displayMaterial.current.uniforms.uColorIntensity.value =
+        config.colorIntensity;
       displayMaterial.current.uniforms.uSoftness.value = config.softness;
-      displayMaterial.current.uniforms.uColor1.value.set(...hexToRgb(config.color1));
-      displayMaterial.current.uniforms.uColor2.value.set(...hexToRgb(config.color2));
-      displayMaterial.current.uniforms.uColor3.value.set(...hexToRgb(config.color3));
-      displayMaterial.current.uniforms.uColor4.value.set(...hexToRgb(config.color4));
+      displayMaterial.current.uniforms.uColor1.value.set(
+        ...hexToRgb(config.color1),
+      );
+      displayMaterial.current.uniforms.uColor2.value.set(
+        ...hexToRgb(config.color2),
+      );
+      displayMaterial.current.uniforms.uColor3.value.set(
+        ...hexToRgb(config.color3),
+      );
+      displayMaterial.current.uniforms.uColor4.value.set(
+        ...hexToRgb(config.color4),
+      );
     }
 
     if (fluidMaterial.current && fluidMeshRef.current) {
-        fluidMaterial.current.uniforms.iPreviousFrame.value = previousFluidTarget.texture;
-        gl.setRenderTarget(currentFluidTarget);
-        gl.render(fluidMeshRef.current, camera);
+      fluidMaterial.current.uniforms.iPreviousFrame.value =
+        previousFluidTarget.texture;
+      gl.setRenderTarget(currentFluidTarget);
+      gl.render(fluidMeshRef.current, camera);
     }
-    
+
     if (displayMaterial.current && displayMeshRef.current) {
-        displayMaterial.current.uniforms.iFluid.value = currentFluidTarget.texture;
-        gl.setRenderTarget(null);
-        gl.render(displayMeshRef.current, camera);
+      displayMaterial.current.uniforms.iFluid.value =
+        currentFluidTarget.texture;
+      gl.setRenderTarget(null);
+      gl.render(displayMeshRef.current, camera);
     }
 
     const temp = currentFluidTarget;
     setCurrentFluidTarget(previousFluidTarget);
     setPreviousFluidTarget(temp);
 
-    setFrameCount(prev => prev + 1);
+    setFrameCount((prev) => prev + 1);
   });
 
   const fluidPlane = useMemo(() => {
@@ -355,10 +368,16 @@ function FluidSimulation() {
 
   useEffect(() => {
     if (fluidMaterial.current) {
-      fluidMaterial.current.uniforms.iResolution.value.set(size.width, size.height);
+      fluidMaterial.current.uniforms.iResolution.value.set(
+        size.width,
+        size.height,
+      );
     }
     if (displayMaterial.current) {
-      displayMaterial.current.uniforms.iResolution.value.set(size.width, size.height);
+      displayMaterial.current.uniforms.iResolution.value.set(
+        size.width,
+        size.height,
+      );
     }
     fluidTarget1.setSize(size.width, size.height);
     fluidTarget2.setSize(size.width, size.height);
@@ -375,15 +394,13 @@ function FluidSimulation() {
 
 function OrthographicCameraSetup() {
   const { size, set } = useThree();
-  
+
   useEffect(() => {
     const aspect = size.width / size.height;
-    const camera = new THREE.OrthographicCamera(
-      -aspect, aspect, 1, -1, 0, 1
-    );
+    const camera = new THREE.OrthographicCamera(-aspect, aspect, 1, -1, 0, 1);
     set({ camera });
   }, [size, set]);
-  
+
   return null;
 }
 
@@ -392,19 +409,16 @@ export const FluidGradient = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setSimKey(prev => prev + 1); 
+      setSimKey((prev) => prev + 1);
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
   return (
-    <Canvas
-     className='absolute inset-0'
-     gl={{ antialias: true }}
->
+    <Canvas className="absolute inset-0" gl={{ antialias: true }}>
       <OrthographicCameraSetup />
       <FluidSimulation key={simKey} />
     </Canvas>
   );
-}
+};

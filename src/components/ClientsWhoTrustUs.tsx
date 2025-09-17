@@ -1,82 +1,23 @@
 import { Marquee } from "@/components/marquee";
-import { cn } from "@/lib/utils";
+import Link from "next/link";
+import * as images from "@/assets/images";
+import Image from "next/image";
 
-const reviews = [
-  {
-    name: "Jack",
-    username: "@jack",
-    body: "I've never seen anything like this before. It's amazing. I love it.",
-    img: "https://avatar.vercel.sh/jack",
-  },
-  {
-    name: "Jill",
-    username: "@jill",
-    body: "I don't know what to say. I'm speechless. This is amazing.",
-    img: "https://avatar.vercel.sh/jill",
-  },
-  {
-    name: "John",
-    username: "@john",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/john",
-  },
-  {
-    name: "Jane",
-    username: "@jane",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/jane",
-  },
-  {
-    name: "Jenny",
-    username: "@jenny",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/jenny",
-  },
-  {
-    name: "James",
-    username: "@james",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/james",
-  },
+const clientLogos = [
+  { src: images.a.src, alt: "Client A" },
+  { src: images.b.src, alt: "Client B" },
+  { src: images.c.src, alt: "Client C" },
+  { src: images.d.src, alt: "Client D" },
+  { src: images.e.src, alt: "Client E" },
+  { src: images.f.src, alt: "Client F" },
+  { src: images.g.src, alt: "Client G" },
+  { src: images.h.src, alt: "Client H" },
+  { src: images.i.src, alt: "Client I" },
+  { src: images.j.src, alt: "Client J" },
+  { src: images.k.src, alt: "Client K" },
+  { src: images.l.src, alt: "Client L" },
+  { src: images.m.src, alt: "Client M" },
 ];
-
-const firstRow = reviews.slice(0, reviews.length / 2);
-const secondRow = reviews.slice(reviews.length / 2);
-
-const ReviewCard = ({
-  img,
-  name,
-  username,
-  body,
-}: {
-  img: string;
-  name: string;
-  username: string;
-  body: string;
-}) => {
-  return (
-    <figure
-      className={cn(
-        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
-        // light styles
-        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-        // dark styles
-        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
-      )}
-    >
-      <div className="flex flex-row items-center gap-2">
-        <img className="rounded-full" width="32" height="32" alt="" src={img} />
-        <div className="flex flex-col">
-          <figcaption className="text-sm font-medium dark:text-white">
-            {name}
-          </figcaption>
-          <p className="text-xs font-medium dark:text-white/40">{username}</p>
-        </div>
-      </div>
-      <blockquote className="mt-2 text-sm">{body}</blockquote>
-    </figure>
-  );
-};
 
 export function ClientsWhoTrustUs() {
   return (
@@ -87,20 +28,22 @@ export function ClientsWhoTrustUs() {
             Clients Who Trust Us
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            See what our satisfied clients have to say about their experience
-            working with us.
+            Trusted by leading brands across industries.
           </p>
         </div>
-
-        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-          <Marquee repeat={4} pauseOnHover className="[--duration:20s]">
-            {firstRow.map((review) => (
-              <ReviewCard key={review.username} {...review} />
-            ))}
-          </Marquee>
-          <Marquee reverse pauseOnHover className="[--duration:20s]">
-            {secondRow.map((review) => (
-              <ReviewCard key={review.username} {...review} />
+        <div className="relative flex w-full items-center justify-center overflow-hidden">
+          <Marquee pauseOnHover className="[--duration:20s] gap-8">
+            {clientLogos.map((logo, idx) => (
+              <Link href="#" key={logo.alt} className="block">
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={120}
+                  height={64}
+                  className="h-16 w-auto rounded-xl shadow bg-white p-2 mx-4"
+                  draggable={false}
+                />
+              </Link>
             ))}
           </Marquee>
           <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-gray-50 dark:from-gray-900"></div>

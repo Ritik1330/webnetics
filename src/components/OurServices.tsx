@@ -1,16 +1,43 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: <explanation> */
+/** biome-ignore-all assist/source/organizeImports: <explanation> */
+import {
+  ChatBubbleIcon,
+  ExclamationTriangleIcon,
+  InstagramLogoIcon,
+  GitHubLogoIcon,
+} from "@radix-ui/react-icons";
+import {
+  RocketIcon,
+  ClipboardListIcon,
+  LaptopIcon,
+  TrendingUpIcon,
+  GlobeIcon,
+  TargetIcon,
+  WrenchIcon,
+  MailIcon,
+  MessageSquareIcon,
+  MonitorIcon,
+  PawPrintIcon,
+} from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { ShineBorder } from "./ui/shine-border";
+import { OrbitingCircles } from "./ui/orbiting-circles";
 import {
   AdIcon,
   ChatIcon,
-  DesktopIcon,
-  // DownloadIcon,
   EmailIcon,
   HashIcon,
-  MobileIcon,
-  PaperPlaneIcon,
   PawIcon,
-} from "../assets/svg";
-import { OrbitingCircles } from "./ui/orbiting-circles";
+  PaperPlaneIcon,
+  DesktopIcon,
+  MobileIcon,
+} from "@/assets/svg";
 
 export function OrbitingCirclesDemo() {
   const centerContent = (
@@ -125,13 +152,13 @@ export function OrbitingCirclesDemo() {
               iconSize={100}
               centerContent={centerContent}
             >
-              <PawIcon className="w-10 h-10 text-orange-500" />
+              <PawPrintIcon className="w-10 h-10 text-orange-500" />
               <MobileIcon className="w-10 h-10 text-orange-500" />
               <DesktopIcon className="w-10 h-10 text-orange-500" />
-              <ChatIcon className="w-10 h-10 text-orange-500" />
+              <ChatBubbleIcon className="w-10 h-10 text-orange-500" />
               <HashIcon className="w-10 h-10 text-orange-500" />
               <PaperPlaneIcon className="w-10 h-10 text-orange-500" />
-              <EmailIcon className="w-10 h-10 text-orange-500" />
+              <ExclamationTriangleIcon className="w-10 h-10 text-orange-500" />
               <AdIcon />
             </OrbitingCircles>
           </div>
@@ -178,67 +205,90 @@ export function OurServices() {
       title: "Influencer Marketing",
       description:
         "Select your audience, define your target position on every app store list and we'll do the rest.",
-      icon: "🚀",
+      icon: <RocketIcon className="w-8 h-8 text-blue-500" />,
     },
     {
       id: "lead-generation",
       title: "Lead Generation",
       description:
         "For a long-term relationship, we need to keep delivering valid, qualified and high converting leads every single month.",
-      icon: "📋",
+      icon: <ClipboardListIcon className="w-8 h-8 text-blue-500" />,
     },
     {
       id: "programmatic",
       title: "Programmatic",
       description:
         "The largest Permission Email Marketing Database Network in the world totally opt-in and compliant with GDPR.",
-      icon: "💻",
+      icon: <LaptopIcon className="w-8 h-8 text-blue-500" />,
     },
     {
       id: "performance-marketing",
       title: "Performance Marketing",
       description:
         "Finding the best match between people with the right influence and your brand values, all supported by powerful technology.",
-      icon: "📈",
+      icon: <TrendingUpIcon className="w-8 h-8 text-blue-500" />,
     },
     {
       id: "brand-awareness",
       title: "Brand Awareness",
       description:
         "More sales provided by one of the largest site networks in the world keeping your brand in your audience minds.",
-      icon: "🌐",
+      icon: <GlobeIcon className="w-8 h-8 text-blue-500" />,
     },
     {
       id: "social-media",
       title: "Social Media",
       description:
         "Strategic planning choosing the best channels and platforms to spread your brand values to the right audience.",
-      icon: "👍",
+      icon: <InstagramLogoIcon className="w-8 h-8 text-blue-500" />,
     },
     {
       id: "retargeting",
       title: "Retargeting",
       description:
         "Select your audience, define your target position on every app store list and we'll do the rest.",
-      icon: "🎯",
+      icon: <TargetIcon className="w-8 h-8 text-blue-500" />,
     },
     {
       id: "technology",
       title: "Technology",
       description:
         "Finding the best match between people with the right influence and your brand values, all supported by powerful technology.",
-      icon: "🔧",
+      icon: <WrenchIcon className="w-8 h-8 text-blue-500" />,
+    },
+    {
+      id: "email-marketing",
+      title: "Email Marketing",
+      description:
+        "Reach your audience directly with targeted email campaigns and newsletters.",
+      icon: <MailIcon className="w-8 h-8 text-blue-500" />,
+    },
+    {
+      id: "chat-support",
+      title: "Chat Support",
+      description:
+        "Provide instant support and engagement through live chat solutions.",
+      icon: <MessageSquareIcon className="w-8 h-8 text-blue-500" />,
+    },
+    {
+      id: "web-development",
+      title: "Web Development",
+      description:
+        "Build modern, responsive websites and web applications for your business.",
+      icon: <MonitorIcon className="w-8 h-8 text-blue-500" />,
+    },
+    {
+      id: "google-ads",
+      title: "Google Ads",
+      description:
+        "Boost your visibility and reach with targeted Google Ads campaigns.",
+      icon: <GitHubLogoIcon className="w-8 h-8 text-blue-500" />,
     },
   ];
 
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
-        {/* Orbiting Circles Section */}
-        <div className="mb-20">
-          <OrbitingCirclesDemo />
-        </div>
-
         {/* Services Section */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center mb-4">
@@ -252,25 +302,32 @@ export function OurServices() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {services.map((service) => (
-            <div key={service.id} className="text-center p-6">
-              {/* Icon */}
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl text-blue-500">{service.icon}</span>
-              </div>
-
-              {/* Title */}
-              <h3 className="text-xl font-bold text-gray-800 mb-4">
-                {service.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-gray-600 leading-relaxed">
-                {service.description}
-              </p>
-            </div>
+            <Card
+              key={service.id}
+              className="relative overflow-hidden max-w-[350px] w-full mx-auto"
+            >
+              <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
+              <CardHeader className="items-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                  {service.icon}
+                </div>
+                <CardTitle className="text-xl font-bold text-gray-800 mb-2 text-center">
+                  {service.title}
+                </CardTitle>
+                <CardDescription className="text-gray-600 leading-relaxed text-center">
+                  {service.description}
+                </CardDescription>
+              </CardHeader>
+              {/* Optionally add CardContent or CardFooter if needed */}
+            </Card>
           ))}
+        </div>
+
+        {/* Orbiting Circles Section */}
+        <div>
+          <OrbitingCirclesDemo />
         </div>
       </div>
     </section>

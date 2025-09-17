@@ -1,3 +1,4 @@
+// biome-ignore assist/source/organizeImports: <explanation>
 import { HERO } from "@/assets/images";
 import { AboutUs } from "@/components/aboutUs";
 import { ClientsWhoTrustUs } from "@/components/ClientsWhoTrustUs";

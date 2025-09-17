@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
 const gradientButtonVariants = cva(
   [
@@ -25,27 +25,27 @@ const gradientButtonVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  }
-)
+  },
+);
 
 export interface GradientButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof gradientButtonVariants> {
-  asChild?: boolean
+  asChild?: boolean;
 }
 
 const GradientButton = React.forwardRef<HTMLButtonElement, GradientButtonProps>(
   ({ className, variant, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
+    const Comp = asChild ? Slot : "button";
     return (
       <Comp
         className={cn(gradientButtonVariants({ variant, className }))}
         ref={ref}
         {...props}
       />
-    )
-  }
-)
-GradientButton.displayName = "GradientButton"
+    );
+  },
+);
+GradientButton.displayName = "GradientButton";
 
-export { GradientButton, gradientButtonVariants }
+export { GradientButton, gradientButtonVariants };

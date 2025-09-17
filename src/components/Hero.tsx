@@ -1,9 +1,9 @@
 "use client";
+// biome-ignore assist/source/organizeImports: <explanation>
 import { ArrowRight } from "lucide-react";
-
-import { Button } from "@/components/ui/moving-border";
 import { HERO_WAVE } from "@/assets/images";
 import Image from "next/image";
+import { NeonShimmerButton } from "./ui/neon-shimmer-button";
 
 interface Hero1Props {
   heading: string;
@@ -78,32 +78,29 @@ const Hero1 = ({
             </p>
             <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-left-2 duration-1000 delay-700">
               {buttons.primary && (
-                <Button
-                  borderRadius="1.75rem"
+                <NeonShimmerButton
+                  variant="pink"
                   className="bg-gradient-to-r from-blue-400 via-blue-500 to-white text-primary font-semibold px-8 py-4 text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   <a
                     href={buttons.primary.url}
-                    className="flex items-center text-xl justify-center group"
+                    className="flex items-center text-xl justify-center group  text-nowrap"
                   >
                     {buttons.primary.text}
                     <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
                   </a>
-                </Button>
+                </NeonShimmerButton>
               )}
               {buttons.secondary && (
-                <Button
-                  borderRadius="1.75rem"
-                  className="bg-gradient-to-r text-white font-semibold px-8 py-4 text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
-                >
+                <NeonShimmerButton className="bg-gradient-to-r text-white font-semibold px-8 py-4 text-lg transition-all duration-300 shadow-lg hover:shadow-xl">
                   <a
                     href={buttons.secondary.url}
-                    className="flex items-center text-xl  justify-center group"
+                    className="flex items-center text-xl  justify-center group text-nowrap"
                   >
                     {buttons.secondary.text}
                     <ArrowRight className="size-4 ml-2 transition-transform group-hover:translate-x-1" />
                   </a>
-                </Button>
+                </NeonShimmerButton>
               )}
             </div>
           </div>
