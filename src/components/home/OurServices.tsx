@@ -18,8 +18,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ShineBorder } from "./ui/shine-border";
-import { OrbitingCircles } from "./ui/orbiting-circles";
+import { ShineBorder } from "../ui/shine-border";
+import { OrbitingCircles } from "../ui/orbiting-circles";
 import {
   AdIcon,
   ChatIcon,

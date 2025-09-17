@@ -1,4 +1,4 @@
-import { Marquee } from "@/components/marquee";
+import { Marquee } from "@/components/home/marquee";
 import Link from "next/link";
 import * as images from "@/assets/images";
 import Image from "next/image";

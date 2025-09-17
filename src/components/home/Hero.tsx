@@ -3,8 +3,8 @@
 import { HERO, HERO2, HERO3, HERO_WAVE } from "@/assets/images";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { NeonShimmerButton } from "./ui/neon-shimmer-button";
-import { HeroCarousel } from "./ui/hero-carousel";
+import { NeonShimmerButton } from "../ui/neon-shimmer-button";
+import { HeroCarousel } from "../ui/hero-carousel";
 
 const heroSlides = [
   {
