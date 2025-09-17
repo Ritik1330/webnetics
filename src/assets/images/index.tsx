@@ -5,6 +5,8 @@ export { default as LOGO_BG } from "./logo_bg.png";
 export { default as HERO } from "./hero.png";
 export { default as HERO2 } from "./hero2.png";
 export { default as HERO3 } from "./hero3.png";
+export { default as PUBLISHER } from "./publisher.png";
+export { default as ADVERTISER } from "./advertiser.png";
 export { default as a } from "./a.webp";
 export { default as b } from "./b.webp";
 export { default as c } from "./c.webp";
