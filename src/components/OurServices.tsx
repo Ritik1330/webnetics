@@ -1,11 +1,7 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: <explanation> */
 /** biome-ignore-all assist/source/organizeImports: <explanation> */
-import {
-  ChatBubbleIcon,
-  ExclamationTriangleIcon,
-  InstagramLogoIcon,
-  GitHubLogoIcon,
-} from "@radix-ui/react-icons";
+import { siInstagram, siGithub } from "simple-icons";
+import { ChatBubbleIcon, ExclamationTriangleIcon } from "@radix-ui/react-icons";
 import {
   RocketIcon,
   ClipboardListIcon,
@@ -84,13 +80,13 @@ export function OrbitingCirclesDemo() {
               iconSize={50}
               centerContent={centerContent}
             >
-              <PawIcon className="w-6 h-6 text-orange-500" />
-              <MobileIcon className="w-6 h-6 text-orange-500" />
-              <DesktopIcon className="w-6 h-6 text-orange-500" />
-              <ChatIcon className="w-6 h-6 text-orange-500" />
-              <HashIcon className="w-6 h-6 text-orange-500" />
-              <PaperPlaneIcon className="w-6 h-6 text-orange-500" />
-              <EmailIcon className="w-6 h-6 text-orange-500" />
+              <PawIcon className="w-10 h-10 text-orange-500" />
+              <MobileIcon className="w-10 h-10 text-orange-500" />
+              <DesktopIcon className="w-10 h-10 text-orange-500" />
+              <ChatIcon className="w-10 h-10 text-orange-500" />
+              <HashIcon className="w-10 h-10 text-orange-500" />
+              <PaperPlaneIcon className="w-10 h-10 text-orange-500" />
+              <EmailIcon className="w-10 h-10 text-orange-500" />
               <AdIcon />
             </OrbitingCircles>
           </div>
@@ -152,13 +148,13 @@ export function OrbitingCirclesDemo() {
               iconSize={100}
               centerContent={centerContent}
             >
-              <PawPrintIcon className="w-10 h-10 text-orange-500" />
+              <PawIcon className="w-10 h-10 text-orange-500" />
               <MobileIcon className="w-10 h-10 text-orange-500" />
-              <DesktopIcon className="w-10 h-10 text-orange-500" />
-              <ChatBubbleIcon className="w-10 h-10 text-orange-500" />
+              <DesktopIcon className="w-10  h-10 text-orange-500" />
+              <ChatIcon className="w-10 h-10 text-orange-500" />
               <HashIcon className="w-10 h-10 text-orange-500" />
               <PaperPlaneIcon className="w-10 h-10 text-orange-500" />
-              <ExclamationTriangleIcon className="w-10 h-10 text-orange-500" />
+              <EmailIcon className="w-10 h-10 text-orange-500" />
               <AdIcon />
             </OrbitingCircles>
           </div>
@@ -240,7 +236,17 @@ export function OurServices() {
       title: "Social Media",
       description:
         "Strategic planning choosing the best channels and platforms to spread your brand values to the right audience.",
-      icon: <InstagramLogoIcon className="w-8 h-8 text-blue-500" />,
+      icon: (
+        <svg
+          role="img"
+          viewBox="0 0 24 24"
+          className="w-8 h-8 text-blue-500"
+          fill="currentColor"
+        >
+          <title>Instagram</title>
+          <path d={siInstagram.path} />
+        </svg>
+      ),
     },
     {
       id: "retargeting",
@@ -282,7 +288,17 @@ export function OurServices() {
       title: "Google Ads",
       description:
         "Boost your visibility and reach with targeted Google Ads campaigns.",
-      icon: <GitHubLogoIcon className="w-8 h-8 text-blue-500" />,
+      icon: (
+        <svg
+          role="img"
+          viewBox="0 0 24 24"
+          className="w-8 h-8 text-blue-500"
+          fill="currentColor"
+        >
+          <title>GitHub</title>
+          <path d={siGithub.path} />
+        </svg>
+      ),
     },
   ];
 
