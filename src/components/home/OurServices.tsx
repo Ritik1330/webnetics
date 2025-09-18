@@ -35,9 +35,9 @@ export function OrbitingCirclesDemo() {
   const centerContent = (
     <div className="text-center">
       {/* <DownloadIcon className="w-10 h-10 text-orange-500 mx-auto mb-2" /> */}
-      <div className="text-3xl font-bold text-orange-500">405</div>
+      {/* <div className="text-3xl font-bold text-orange-500">405</div> */}
       <div className="text-sm text-gray-600 uppercase tracking-wide">
-        App Downloads
+        Growing Together
       </div>
     </div>
   );
@@ -45,7 +45,7 @@ export function OrbitingCirclesDemo() {
   const statistics = [
     { number: "500", label: "Happy Clients" },
     { number: "200", label: "Finished Projects" },
-    { number: "2000", label: "Published Game" },
+    { number: "2000", label: "Publisher base" },
     { number: "1000", label: "Monthly New Campaigns" },
   ];
 
@@ -166,7 +166,7 @@ export function OrbitingCirclesDemo() {
               2000<span className="text-orange-500 text-sm">+</span>
             </div>
             <div className="text-xs text-gray-600 uppercase tracking-wide">
-              Published Game
+              Publisher base
             </div>
           </div>
         </div>
