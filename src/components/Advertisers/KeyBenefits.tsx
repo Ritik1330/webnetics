@@ -1,32 +1,34 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import { Card } from "../ui/card";
+import { Target, BarChart2, DollarSign, Shield } from "lucide-react";
 
 const benefits = [
   {
     title: "Targeted Reach",
     description:
       "Connect with your ideal audience through advanced targeting capabilities and data-driven insights.",
-    icon: "🎯",
+    icon: Target,
   },
   {
     title: "Real-time Analytics",
     description:
       "Track campaign performance in real-time with comprehensive analytics and reporting tools.",
-    icon: "📊",
+    icon: BarChart2,
   },
   {
     title: "Cost Efficiency",
     description:
       "Optimize your advertising budget with flexible pricing models and performance-based campaigns.",
-    icon: "💰",
+    icon: DollarSign,
   },
   {
     title: "Brand Safety",
     description:
       "Ensure your ads appear in brand-safe environments with our advanced content filtering.",
-    icon: "🛡️",
+    icon: Shield,
   },
 ];
 
@@ -58,7 +60,11 @@ export function KeyBenefits() {
               transition={{ duration: 0.8, delay: index * 0.2 }}
             >
               <Card className="p-6 h-full hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-4">{benefit.icon}</div>
+                <div className="mb-4">
+                  {React.createElement(benefit.icon, {
+                    className: "w-10 h-10",
+                  })}
+                </div>
                 <h3 className="text-xl font-semibold mb-3">{benefit.title}</h3>
                 <p className="text-gray-600 dark:text-gray-300">
                   {benefit.description}

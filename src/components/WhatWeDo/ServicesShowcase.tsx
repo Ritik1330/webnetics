@@ -1,27 +1,65 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import { Card } from "../ui/card";
+import {
+  Globe,
+  Target,
+  Smartphone,
+  Mail,
+  MessageCircle,
+  Phone,
+  Facebook,
+  Search,
+  CheckCircle2,
+  Code,
+  MessageSquare,
+} from "lucide-react";
 
 const services = [
+  {
+    title: "Website Development",
+    description:
+      "Create stunning, responsive websites tailored to your business needs.",
+    icon: Code,
+    features: [
+      "Custom Design",
+      "Responsive Layout",
+      "SEO Optimized",
+      "Performance Focused",
+    ],
+  },
+  {
+    title: "App Development",
+    description:
+      "Build powerful mobile and web applications for your business.",
+    icon: Smartphone,
+    features: [
+      "iOS & Android",
+      "Cross-platform",
+      "User-friendly UI",
+      "Scalable Solutions",
+    ],
+  },
   {
     title: "Digital Marketing",
     description:
       "Comprehensive digital marketing strategies to grow your online presence.",
-    icon: "🌐",
+    icon: Globe,
     features: ["SEO Optimization", "Content Marketing", "Analytics & Tracking"],
   },
   {
     title: "Brand Awareness",
     description:
       "Build and strengthen your brand identity across all digital channels.",
-    icon: "🎯",
+    icon: Target,
     features: ["Brand Strategy", "Visual Identity", "Brand Messaging"],
   },
   {
     title: "Social Media",
     description: "Engage your audience on leading social media platforms.",
-    icon: "📱",
+    icon: Smartphone,
     features: [
       "Content Creation",
       "Community Management",
@@ -32,26 +70,43 @@ const services = [
     title: "Retargeting",
     description:
       "Re-engage potential customers with targeted advertising campaigns.",
-    icon: "🎯",
+    icon: Target,
     features: ["Custom Audiences", "Dynamic Ads", "Cross-platform Retargeting"],
   },
   {
     title: "Email Marketing",
-    description: "Create impactful email campaigns that convert.",
-    icon: "📧",
-    features: ["Personalization", "Automation", "A/B Testing"],
+    description: "Create impactful email campaigns with high conversion rates.",
+    icon: Mail,
+    features: [
+      "Personalization",
+      "Automation",
+      "A/B Testing",
+      "Campaign Analytics",
+    ],
+  },
+  {
+    title: "SMS Marketing",
+    description:
+      "Direct and immediate customer engagement through text messages.",
+    icon: MessageSquare,
+    features: [
+      "Bulk SMS",
+      "Automated Responses",
+      "Delivery Tracking",
+      "Campaign Management",
+    ],
   },
   {
     title: "Chat Support",
     description: "24/7 customer support through modern chat solutions.",
-    icon: "💬",
+    icon: MessageCircle,
     features: ["Live Chat", "Chatbots", "Multi-channel Support"],
   },
   {
     title: "WhatsApp Marketing",
     description:
       "Leverage WhatsApp Business API for direct customer engagement.",
-    icon: "📲",
+    icon: Phone,
     features: [
       "Business Messages",
       "Automated Responses",
@@ -61,13 +116,13 @@ const services = [
   {
     title: "Facebook Marketing",
     description: "Targeted advertising and engagement on Facebook.",
-    icon: "👥",
+    icon: Facebook,
     features: ["Ad Campaigns", "Audience Targeting", "Performance Tracking"],
   },
   {
     title: "Google Ads",
     description: "Strategic PPC campaigns to drive qualified traffic.",
-    icon: "🎯",
+    icon: Search,
     features: ["Search Ads", "Display Network", "Conversion Optimization"],
   },
 ];
@@ -107,8 +162,10 @@ export function ServicesShowcase() {
 
                 <div className="relative">
                   {/* Service Icon */}
-                  <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                    {service.icon}
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                    {React.createElement(service.icon, {
+                      className: "w-8 h-8 text-blue-500",
+                    })}
                   </div>
 
                   {/* Title & Description */}
@@ -123,21 +180,7 @@ export function ServicesShowcase() {
                   <ul className="space-y-2">
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-center text-sm">
-                        <svg
-                          className="w-4 h-4 text-green-500 mr-2 flex-shrink-0"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          aria-hidden="true"
-                        >
-                          <title>Feature check icon</title>
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 text-orange-500 mr-2 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}

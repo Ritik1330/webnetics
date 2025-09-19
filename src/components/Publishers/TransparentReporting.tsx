@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { CheckCircle2 } from "lucide-react";
 
 const features = [
   "Real-time revenue tracking",
@@ -41,20 +42,7 @@ export function TransparentReporting() {
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   className="flex items-center"
                 >
-                  <svg
-                    className="w-6 h-6 text-green-500 mr-3"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
+                  <CheckCircle2 className="w-6 h-6 text-orange-500 mr-3" />
                   {feature}
                 </motion.li>
               ))}

@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { X, Facebook, Linkedin, MapPin, Phone, Mail } from "lucide-react";
+import { LOGO } from "@/assets/images";
 
 export function Footer() {
   return (
@@ -8,7 +10,15 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold">Your Company</h3>
+            <Link href="/" className="block">
+              <Image
+                src={LOGO}
+                alt="Webnetics"
+                width={150}
+                height={40}
+                className="w-auto h-10"
+              />
+            </Link>
             <p className="text-gray-300 text-sm leading-relaxed">
               We provide innovative solutions to help your business grow and
               succeed in today's competitive market.
@@ -157,7 +167,7 @@ export function Footer() {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm">
-              © 2024 Your Company. All rights reserved.
+              © 2024 Webnetics. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <Link

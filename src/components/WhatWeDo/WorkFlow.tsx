@@ -1,36 +1,38 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import { Card } from "../ui/card";
+import { Target, ClipboardList, Zap, LineChart, BarChart } from "lucide-react";
 
 const workflowSteps = [
   {
     title: "Discovery & Strategy",
     description:
       "We analyze your business needs and develop a tailored digital strategy.",
-    icon: "🎯",
+    icon: Target,
   },
   {
     title: "Campaign Planning",
     description:
       "Create detailed campaign roadmaps with clear goals and metrics.",
-    icon: "📋",
+    icon: ClipboardList,
   },
   {
     title: "Implementation",
     description: "Execute campaigns across chosen platforms with precision.",
-    icon: "⚡",
+    icon: Zap,
   },
   {
     title: "Monitoring & Optimization",
     description:
       "Real-time tracking and continuous optimization for best results.",
-    icon: "📊",
+    icon: LineChart,
   },
   {
     title: "Reporting & Analysis",
     description: "Comprehensive reports with actionable insights.",
-    icon: "📈",
+    icon: BarChart,
   },
 ];
 
@@ -75,7 +77,11 @@ export function WorkFlow() {
                       {index + 1}
                     </div>
 
-                    <div className="text-4xl mb-4">{step.icon}</div>
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                      {React.createElement(step.icon, {
+                        className: "w-8 h-8 text-blue-500",
+                      })}
+                    </div>
                     <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
                     <p className="text-gray-600 dark:text-gray-300">
                       {step.description}

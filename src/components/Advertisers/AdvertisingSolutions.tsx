@@ -1,8 +1,10 @@
+/** biome-ignore-all assist/source/organizeImports: <explanation> */
 "use client";
 
 import { motion } from "framer-motion";
 import { Card } from "../ui/card";
 import { Button } from "../ui/button";
+import { CheckCircle2 } from "lucide-react";
 
 const solutions = [
   {
@@ -72,14 +74,20 @@ export function AdvertisingSolutions() {
               transition={{ duration: 0.8, delay: index * 0.2 }}
             >
               <Card
-                className={`p-6 h-full flex flex-col ${solution.featured ? "border-2 border-purple-500" : ""}`}
+                className={`p-6 h-full flex flex-col hover:shadow-xl transition-all duration-300 group relative overflow-hidden border-2 border-transparent ${
+                  solution.featured
+                    ? "border-orange-500"
+                    : "hover:border-orange-500/50"
+                }`}
               >
+                {/* Gradient Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-400/5 via-amber-500/5 to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 {solution.featured && (
-                  <div className="bg-purple-500 text-white text-sm font-semibold py-1 px-3 rounded-full self-start mb-4">
+                  <div className="bg-gradient-to-r from-orange-400 to-blue-600 text-white text-sm font-semibold py-1 px-3 rounded-full self-start mb-4">
                     Most Popular
                   </div>
                 )}
-                <h3 className="text-2xl font-semibold mb-3">
+                <h3 className="text-2xl font-semibold mb-3 bg-gradient-to-r from-orange-400 to-blue-600 bg-clip-text text-transparent">
                   {solution.title}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -88,32 +96,14 @@ export function AdvertisingSolutions() {
                 <ul className="space-y-2 mb-6 flex-grow">
                   {solution.features.map((feature) => (
                     <li key={feature} className="flex items-center">
-                      <svg
-                        className="w-5 h-5 text-green-500 mr-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
+                      <CheckCircle2 className="w-5 h-5 text-green-500 mr-2" />
                       {feature}
                     </li>
                   ))}
                 </ul>
                 <div className="mt-auto">
                   <p className="text-lg font-semibold mb-4">{solution.price}</p>
-                  <Button
-                    className={`w-full ${
-                      solution.featured
-                        ? "bg-purple-500 hover:bg-purple-600"
-                        : "bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600"
-                    }`}
-                  >
+                  <Button className="w-full bg-gradient-to-r from-orange-400 to-blue-600 hover:from-orange-500 hover:to-blue-700 text-white transition-all duration-300">
                     Get Started
                   </Button>
                 </div>
