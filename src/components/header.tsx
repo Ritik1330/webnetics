@@ -1,19 +1,43 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Menu, Search, X } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+import { Menu, Search, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { LOGO } from "../assets/images";
+
+// Type definition for navigation links
+type NavigationLink = {
+  name: string;
+  href: string;
+  hasDropdown?: boolean;
+  dropdownItems?: { name: string; href: string }[];
+};
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDesktopDropdownOpen, setIsDesktopDropdownOpen] = useState(false);
+  const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
-  const navigationLinks = [
+  const navigationLinks: NavigationLink[] = [
     { name: "HOME", href: "/" },
     { name: "ADVERTISERS", href: "/advertisers" },
     { name: "PUBLISHERS", href: "/publishers" },
     { name: "WHAT WE DO", href: "/what-we-do" },
+    // {
+    //   name: "CASE STUDIES",
+    //   href: "/case-studies",
+    //   hasDropdown: true,
+    //   dropdownItems: [
+    //     { name: "Kotak 811", href: "/case-studies/kotak-811" },
+    //     {
+    //       name: "Tata AIG Car Insurance",
+    //       href: "/case-studies/tata-aig-car-insurance",
+    //     },
+    //     { name: "Paisa Bazaar", href: "/case-studies/paisa-bazaar" },
+    //   ],
+    // },
     { name: "CONTACT US", href: "/contact" },
   ];
 
@@ -85,15 +109,58 @@ const Header = () => {
               </div>
 
               <nav className="flex items-center space-x-8">
-                {navigationLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className={`font-medium text-lg tracking-wide transition-all duration-200 hover:-translate-y-0.5 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:transition-all after:duration-300 hover:after:w-full focus:outline-2 focus:outline-ring focus:outline-offset-2 text-muted-foreground hover:text-primary after:bg-primary `}
-                  >
-                    {link.name}
-                  </a>
-                ))}
+                {navigationLinks.map((link) =>
+                  link.hasDropdown ? (
+                    <div key={link.name} className="relative" ref={dropdownRef}>
+                      <button
+                        type="button"
+                        className={`flex items-center font-medium text-lg tracking-wide transition-all duration-200 hover:-translate-y-0.5 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:transition-all after:duration-300 hover:after:w-full focus:outline-2 focus:outline-ring focus:outline-offset-2 text-muted-foreground hover:text-primary after:bg-primary`}
+                        onClick={() =>
+                          setIsDesktopDropdownOpen(!isDesktopDropdownOpen)
+                        }
+                        onMouseEnter={() => setIsDesktopDropdownOpen(true)}
+                        onMouseLeave={() => setIsDesktopDropdownOpen(false)}
+                      >
+                        {link.name}
+                        <ChevronDown size={16} className="ml-1" />
+                      </button>
+
+                      {/* Dropdown Menu */}
+                      <div
+                        className={`absolute top-full left-0 mt-2 w-64 bg-white shadow-lg rounded-md overflow-hidden z-50 transition-all duration-200 ${
+                          isDesktopDropdownOpen
+                            ? "opacity-100 visible"
+                            : "opacity-0 invisible"
+                        }`}
+                        onMouseEnter={() => setIsDesktopDropdownOpen(true)}
+                        onMouseLeave={() => setIsDesktopDropdownOpen(false)}
+                        role="menu"
+                        aria-label="Case studies submenu"
+                      >
+                        <div className="py-2">
+                          {link.dropdownItems?.map((item) => (
+                            <a
+                              key={item.name}
+                              href={item.href}
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors"
+                              role="menuitem"
+                            >
+                              {item.name}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      className={`font-medium text-lg tracking-wide transition-all duration-200 hover:-translate-y-0.5 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:transition-all after:duration-300 hover:after:w-full focus:outline-2 focus:outline-ring focus:outline-offset-2 text-muted-foreground hover:text-primary after:bg-primary `}
+                    >
+                      {link.name}
+                    </a>
+                  ),
+                )}
               </nav>
 
               <div className="flex items-center">
@@ -158,16 +225,50 @@ const Header = () => {
             {/* Mobile Navigation */}
             <nav className="flex-1 px-6 py-8">
               <div className="space-y-6">
-                {navigationLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className="block text-lg font-medium text-foreground hover:text-primary transition-colors py-2 border-b border-border/50 hover:border-primary/30"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.name}
-                  </a>
-                ))}
+                {navigationLinks.map((link) =>
+                  link.hasDropdown ? (
+                    <div key={link.name}>
+                      <button
+                        type="button"
+                        className="flex items-center justify-between w-full text-lg font-medium text-foreground hover:text-primary transition-colors py-2 border-b border-border/50 hover:border-primary/30"
+                        onClick={() => {
+                          setIsMobileDropdownOpen(!isMobileDropdownOpen);
+                        }}
+                      >
+                        {link.name}
+                        <ChevronDown
+                          size={16}
+                          className={`transition-transform duration-200 ${isMobileDropdownOpen ? "rotate-180" : ""}`}
+                        />
+                      </button>
+
+                      {/* Mobile Dropdown Items */}
+                      <div
+                        className={`pl-4 mt-2 space-y-2 overflow-hidden transition-all duration-200 ${isMobileDropdownOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
+                      >
+                        {link.dropdownItems?.map((item) => (
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            className="block py-2 text-base text-foreground/80 hover:text-primary transition-colors border-b border-border/30"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {item.name}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      className="block text-lg font-medium text-foreground hover:text-primary transition-colors py-2 border-b border-border/50 hover:border-primary/30"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.name}
+                    </a>
+                  ),
+                )}
               </div>
             </nav>
 

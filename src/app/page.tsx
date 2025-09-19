@@ -1,8 +1,7 @@
 // biome-ignore assist/source/organizeImports: <explanation>
 import { AboutUs } from "@/components/home/aboutUs";
 import { ClientsWhoTrustUs } from "@/components/home/ClientsWhoTrustUs";
-import { Footer } from "@/components/Footer";
-import Header from "@/components/header";
+
 import { Hero } from "@/components/home/Hero";
 import { OurServices } from "@/components/home/OurServices";
 

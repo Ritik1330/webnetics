@@ -1,0 +1,40 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="675" fill="#e01f26"/>
+  
+  <!-- Decorative elements -->
+  <rect x="0" y="0" width="1200" height="675" fill="url(#grid)" opacity="0.1"/>
+  
+  <!-- Tata AIG Logo -->
+  <g transform="translate(600, 250)">
+    <rect x="-250" y="-80" width="500" height="160" rx="10" fill="#ffffff"/>
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="70" font-weight="bold" text-anchor="middle" fill="#e01f26">TATA AIG</text>
+    <text x="0" y="50" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#333333">Car Insurance</text>
+  </g>
+  
+  <!-- Case Study Text -->
+  <text x="600" y="400" font-family="Arial, sans-serif" font-size="36" font-weight="bold" text-anchor="middle" fill="#ffffff">CASE STUDY</text>
+  
+  <!-- Car Icon -->
+  <g transform="translate(400, 500)">
+    <rect x="-70" y="-60" width="140" height="120" rx="20" fill="#ffffff"/>
+    <text x="0" y="20" font-family="Arial, sans-serif" font-size="60" text-anchor="middle" fill="#e01f26">🚗</text>
+  </g>
+  
+  <!-- Digital Marketing Icon -->
+  <g transform="translate(800, 500)">
+    <rect x="-70" y="-60" width="140" height="120" rx="20" fill="#ffffff"/>
+    <text x="0" y="20" font-family="Arial, sans-serif" font-size="60" text-anchor="middle" fill="#e01f26">📱</text>
+  </g>
+  
+  <!-- Results Text -->
+  <text x="400" y="580" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#ffffff">42% Sales Increase</text>
+  <text x="800" y="580" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#ffffff">Digital Strategy</text>
+  
+  <!-- Patterns -->
+  <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#ffffff" stroke-width="1"/>
+    </pattern>
+  </defs>
+</svg>
